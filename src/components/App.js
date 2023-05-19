@@ -4,6 +4,7 @@ import './App.css'
 import Header from './Header'
 import Home from "./Home";
 import Listings from "./Listings";
+import Agents from "./Agents";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Home/>}/>
       <Route path="/listings" element={<Listings/>}/>
+      <Route path="/agents" element={<Agents/>}/>
     </Routes>
     </>
   )
