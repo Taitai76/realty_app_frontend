@@ -3,16 +3,11 @@ import Navbar from "./Navbar"
 import './App.css'
 function Header(){
     return(
-        <>
-        <div className="header">
-            <header>
-                <span className="logo">
-                    Mo Realty
-                </span>
-                <Navbar />
-            </header>
-        </div>
-        </>
+        <header>
+            <img className="logo" src='moh_logo.png'></img>
+            <Navbar />
+        </header>   
+
     )
 }
 
