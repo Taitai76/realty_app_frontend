@@ -2,6 +2,7 @@
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     background-color: #E9F1FA;
 }
+/* header and nav */
 header{
     background-color: #E9F1FA;
     display: flex;
@@ -28,6 +29,8 @@ header a:hover{
     border-radius: 10px;
     margin-left: 10px;
 }
+
+/* Listings cards*/
 .card {
     background-color: #fff;
     border-radius: 4px;
@@ -58,5 +61,36 @@ header a:hover{
     font-size: 14px;
     margin: 0;
     color: #555;
+  }
+
+  /* search bar */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .search-bar input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .search-bar button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .search-bar button:hover {
+    background-color: #555;
   }
 
