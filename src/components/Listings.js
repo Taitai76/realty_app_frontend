@@ -15,9 +15,13 @@ function Listings(){
         <div className="listing_list">
             {
                 listing.map((item)=>(
-                    <span>
-                        {item.address}<br/> 
-                    </span>
+                    <div className="card">
+                        <img src={item.picture}></img>
+                        <div className="details">
+                        <span className="price">${item.asking_price.toLocaleString()}<br/></span>
+                        <span className="location">{item.address}</span>
+                        </div>
+                    </div>
                 ))
             }
         </div>
