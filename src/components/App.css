@@ -94,3 +94,46 @@ header a:hover{
     background-color: #555;
   }
 
+  /* add property form*/
+  .property-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .property-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .property-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .property-form button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .property-form button[type="submit"]:hover {
+    background-color: #555;
+  }
+
+  h2{
+    text-align: center;
+  }
+  
+  .delete_card{
+    position: absolute;
+  }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddProperty from "./AddProperty";
+import Listing_item from "./Listing_item";
 
 function Listings(){
     const [listing, setListing] = useState([])
@@ -14,21 +15,27 @@ function Listings(){
         setListing([...listing, added])
     }
 
+    function updatedUndeletedListings(x){
+        setListing(x)
+    }
+
+    function handleDeleteItem(deletedItem) {
+        const updatedItems = listing.filter((item) => item.id !== deletedItem.id);
+        updatedUndeletedListings(updatedItems);
+      }
+
     return(
         <>
-        <div className="listing_list">
-            {
-                listing.map((item)=>(
-                    <div className="card">
-                        <img src={item.picture}></img>
-                        <div className="details">
-                            <span className="price">${item.asking_price.toLocaleString()}<br/></span>
-                            <span className="location">{item.address}</span>
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
+        <h2>Manage Listings</h2>
+        {
+            listing.map((item)=>(
+                <Listing_item 
+                key={item.id}
+                listing={item}
+                onDeleteItem={handleDeleteItem}
+                />
+            ))
+        }
         <h2>Add New Property</h2>
         <AddProperty 
         newerlist={updatedListings}/>

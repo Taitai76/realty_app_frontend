@@ -13,9 +13,10 @@ function Agents(){
         <div className="agent_list">
             {
                 agent.map((item)=>(
-                    <span>
-                        {item.name}<br/> 
-                    </span>
+                    <div className="agent_card">
+                        <h3>{item.name}</h3>
+                        <img src={item.picture}></img>
+                    </div>
                 ))
             }
         </div>

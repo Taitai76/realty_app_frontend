@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import Searchbar from "./Searchbar";
+import Agents from "./Agents";
 function Home(){
     const [listing, setListing] = useState([])
 
@@ -8,13 +9,10 @@ function Home(){
         .then((r) => r.json())
         .then((items) => setListing(items));
     }, []);
+
     return(
         <>
-        <div className="search-bar">
-            <input type="text" placeholder="Search.." ></input>
-            <button>Search</button>
-        </div>
-
+        <Searchbar />
         <div className="listing_list">
             {
                 listing.map((item)=>(
@@ -28,6 +26,8 @@ function Home(){
                 ))
             }
         </div>
+        <h2>Meet our Agents</h2>
+        <Agents />
         </>
     )
 }

@@ -47,7 +47,7 @@ function AddProperty({newerlist}){
  
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="property-form">
         <label>
           Picture:
           <input
