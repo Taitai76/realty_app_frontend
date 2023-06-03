@@ -10,9 +10,14 @@ function Home(){
         .then((items) => setListing(items));
     }, []);
 
+    function updatedListing(t){
+        setListing(t)
+    }
+
+    console.log(listing.first)
     return(
         <>
-        <Searchbar />
+        <Searchbar setUpdatedListing={updatedListing}/>
         <div className="listing_list">
             {
                 listing.map((item)=>(
@@ -20,7 +25,9 @@ function Home(){
                         <img src={item.picture}></img>
                         <div className="details">
                             <span className="price">${item.asking_price.toLocaleString()}<br/></span>
-                            <span className="location">{item.address}</span>
+                            <span className="location">{item.address}<br/></span>
+                            <span className="location">Built in: {item.year_built}<br/></span>
+                            <span className="location">{item.sqft} Sq. ft<br/></span>
                         </div>
                     </div>
                 ))

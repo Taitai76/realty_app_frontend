@@ -17,13 +17,14 @@ function Listings(){
 
     function updatedUndeletedListings(x){
         setListing(x)
-    }
+    };
 
     function handleDeleteItem(deletedItem) {
         const updatedItems = listing.filter((item) => item.id !== deletedItem.id);
         updatedUndeletedListings(updatedItems);
-      }
+    };
 
+    
     return(
         <>
         <h2>Manage Listings</h2>
