@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Listing_item({listing, onDeleteItem}){
+function Listing_item({listing, onDeleteItem, updateListing}){
     const [editingProperty, setEditingProperty] = useState(null);
     const [newAddress, setNewAddress] = useState(listing.address);
     const [newAskingPrice, setNewAskingPrice] = useState(listing.asking_price);
@@ -31,10 +31,9 @@ function Listing_item({listing, onDeleteItem}){
             }),
         })
         .then((r) => r.json())
-        .then((r) => console.log(r));
+        .then((r) => updateListing(r));
 
         setEditingProperty(null);
-        // Perform save logic here (e.g., update property in the database)
       };
     
       const handleCancel = () => {

@@ -4,12 +4,25 @@ import Listing_item from "./Listing_item";
 
 function Listings(){
     const [listing, setListing] = useState([])
+    //const [newListing, setNewListing] = useState([])
 
     useEffect(()=>{
         fetch(("http://localhost:9292/listings"))
         .then((r) => r.json())
         .then((items) => setListing(items));
     }, []);
+
+    function editUpdatedListing(updatedLisitng){
+        const updateListingProperties = listing.map(element => {
+            if(element.id === updatedLisitng.id){
+                return updatedLisitng
+            }else{
+                return element
+            }
+        }
+        );
+        setListing(updateListingProperties)
+    }
 
     function updatedListings(added){
         setListing([...listing, added])
@@ -34,6 +47,7 @@ function Listings(){
                 key={item.id}
                 listing={item}
                 onDeleteItem={handleDeleteItem}
+                updateListing={editUpdatedListing}
                 />
             ))
         }
