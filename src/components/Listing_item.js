@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 
 function Listing_item({listing, onDeleteItem}){
     const [editingProperty, setEditingProperty] = useState(null);
+    const [newAddress, setNewAddress] = useState(listing.address);
+    const [newAskingPrice, setNewAskingPrice] = useState(listing.asking_price);
+    const [newSqft, setNewSqft] = useState(listing.sqft);
 
     function handleDeleteClick() {
         fetch(`http://localhost:9292/listings/${listing.id}`, {
@@ -16,6 +19,20 @@ function Listing_item({listing, onDeleteItem}){
       };
     
       const handleSave = () => {
+        fetch(`http://localhost:9292/listings/${listing.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+        },
+            body: JSON.stringify({
+                asking_price: newAskingPrice,
+                address: newAddress,
+                sqft: newSqft
+            }),
+        })
+        .then((r) => r.json())
+        .then((r) => console.log(r));
+
         setEditingProperty(null);
         // Perform save logic here (e.g., update property in the database)
       };
@@ -30,13 +47,18 @@ function Listing_item({listing, onDeleteItem}){
 
             <div className="property-card editing" key={listing.id}>
                 <img src={listing.picture}></img>
-                <input type="text" value={editingProperty.asking_price} />
-                <input type="text" value={editingProperty.address} />
-                <input type="text" value={editingProperty.sqft} />
-                <div className="action-buttons">
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={handleCancel}>Cancel</button>
-                </div>
+                <form onSubmit={handleSave}>
+                    <input type="text" value={newAskingPrice} 
+                    onChange={(e)=>setNewAskingPrice(e.target.value)}/>
+                    <input type="text" value={newAddress} 
+                    onChange={(e)=>setNewAddress(e.target.value)}/>
+                    <input type="text" value={newSqft} 
+                    onChange={(e)=>setNewSqft(e.target.value)}/>
+                    <div className="action-buttons">
+                        <button onClick={handleSave}>Save</button>
+                        <button onClick={handleCancel}>Cancel</button>
+                    </div>
+                </form>
             </div>
           );
         } else {
