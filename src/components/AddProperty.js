@@ -89,13 +89,13 @@ function AddProperty({newerlist}){
         </label>
         <br />
         <label>
-          Agent ID:
+          Agent Id:
           <input
             type="text"
             name="agent_id"
             value={property.agent_id}
             onChange={handleInputChange}
-          />
+          /> 
         </label>
         <br />
         <label>

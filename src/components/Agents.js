@@ -16,6 +16,7 @@ function Agents(){
                     <div className="agent_card">
                         <img src={item.picture}></img>
                         <h3>{item.name}</h3>
+                        <h3>Agent ID: {item.id}</h3>
                         <p>Years Works: {item.years_worked}</p><br/>
                         <p>Deals Closed: {item.deals_closed}</p>
                     </div>
