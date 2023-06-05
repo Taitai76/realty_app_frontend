@@ -15,16 +15,6 @@ Incorporates a user-friendly interface built with React components.
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 ### What is used
 
 -Ruby with the actiuve record and sinatra gems on the back end
@@ -32,30 +22,17 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* clone this repository 
+* clone the backend repository at https://github.com/Taitai76/phase-3-realty-project
+*run $npm install, then $npm start to launch the front end
+* go to localhost/3000 in your browser to review the front end
+* on the back end run $bundle install in your terminal follwed by $bundle exec rake db:migrate db:seed
+* run $rake server
+* your application should be up and running 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## need to knows
 
-### Code Splitting
+* When adding a listing you must have a link to a picture of home.
+* When adding an agent ID to the listing chech the agents tab to see what ID correlates with what agent. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
