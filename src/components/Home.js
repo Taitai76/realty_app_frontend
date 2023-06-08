@@ -14,7 +14,14 @@ function Home(){
         setListing(t)
     }
 
-    console.log(listing.first)
+    function agentName(t){
+        if (t === 1){
+            return "Roman Wayne"
+        }else if(t === 2){
+            return "Denise Smith"
+        }else return "Jamie McGill"
+    }
+
     return(
         <>
         <Searchbar setUpdatedListing={updatedListing}/>
@@ -28,6 +35,7 @@ function Home(){
                             <span className="location">{item.address}<br/></span>
                             <span className="location">Built in: {item.year_built}<br/></span>
                             <span className="location">{item.sqft} Sq. ft<br/></span>
+                            <span className="location">Contact: {agentName(item.agent_id)}<br/></span>
                         </div>
                     </div>
                 ))
