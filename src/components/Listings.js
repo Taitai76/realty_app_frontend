@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AddProperty from "./AddProperty";
 
 const Listings = ({listing}) => {
   const [editingProperty, setEditingProperty] = useState(null);

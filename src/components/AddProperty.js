@@ -48,7 +48,7 @@ function AddProperty(){
     <div>
       <form onSubmit={handleSubmit} className="property-form">
         <label>
-          Picture:
+          Picture URL:
           <input
             type="text"
             name="picture"
