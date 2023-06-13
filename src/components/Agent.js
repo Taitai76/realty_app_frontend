@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AddProperty from "./AddProperty";
 import Listings from "./Listings";
 
+
 const Agent = () => {
-    const [agent, setAgents] = useState([]);
+    const [listings, setAgents] = useState([]);
 
     const params = useParams()
 
@@ -11,14 +13,19 @@ const Agent = () => {
 
       fetch(`http://localhost:9292/agents/${params.id}`)
         .then((r) => r.json())
-        .then(items => setAgents(items));
+        .then(items => setAgents(items.listings));
     }, []);
 
-    const list = agent.listings?.map((l) => <Listings key={l.id} listing={l} />);
+    function updatedListings(p){
+        setAgents(...listings, p)
+    }
+
+    const list = listings.map((l) => <Listings key={l.id} listing={l} />);
 
     return (
       <div className="listing_list">
         {list}
+        <AddProperty newerlist={updatedListings} />
       </div>
     );
 }

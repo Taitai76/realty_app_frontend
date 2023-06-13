@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-function AddProperty({newerlist}){
+function AddProperty(){
+  const params = useParams()
   const [property, setProperty] = useState({
     picture: '',
     address: '',
     asking_price: '',
     sqft: '',
-    agent_id: '',
     year_built: ''
   });
 
@@ -22,10 +23,9 @@ function AddProperty({newerlist}){
       address: property.address,
       asking_price: property.asking_price,
       sqft: property.sqft,
-      agent_id: property.agent_id,
       year_built: property.year_built
     };
-    fetch("http://localhost:9292/listings", {
+    fetch(`http://localhost:9292/agents/${params.id}/listings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,14 +33,13 @@ function AddProperty({newerlist}){
       body: JSON.stringify(propertyData),
     })
       .then((r) => r.json())
-      .then((r) => newerlist(r));
+      .then((r) => console.log(r));
 
       setProperty({
         picture: '',
         address: '',
         asking_price: '',
         sqft: '',
-        agent_id: '',
         year_built: ''
       });
   }
@@ -87,16 +86,7 @@ function AddProperty({newerlist}){
             onChange={handleInputChange}
           />
         </label>
-        <br />
-        <label>
-          Agent Id:
-          <input
-            type="text"
-            name="agent_id"
-            value={property.agent_id}
-            onChange={handleInputChange}
-          /> 
-        </label>
+      
         <br />
         <label>
           Year Built:
