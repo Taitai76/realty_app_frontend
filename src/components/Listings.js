@@ -4,7 +4,6 @@ import Listing_item from "./Listing_item";
 
 function Listings(){
     const [listing, setListing] = useState([])
-    //const [newListing, setNewListing] = useState([])
 
     useEffect(()=>{
         fetch(("http://localhost:9292/listings"))

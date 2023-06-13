@@ -2,15 +2,30 @@ import React, { useEffect, useState } from "react";
 import Searchbar from "./Searchbar";
 import Agents from "./Agents";
 function Home() {
+  const [listing, setListing] = useState([]);
 
-  // function updatedListing(t) {
-  //   setListing(t);
-  // }
+  useEffect(() => {
+    fetch("http://localhost:9292/listings")
+      .then((r) => r.json())
+      .then((items) => setListing(items));
+  }, []);
+
+  function updatedListing(t) {
+    setListing(t);
+  }
+
+  function agentName(t) {
+    if (t === 1) {
+      return "Roman Wayne";
+    } else if (t === 2) {
+      return "Denise Smith";
+    } else return "Jamie McGill";
+  }
 
   return (
     <>
-      {/* <Searchbar setUpdatedListing={updatedListing} /> */}
-      {/* <div className="listing_list">
+      <Searchbar setUpdatedListing={updatedListing} />
+      <div className="listing_list">
         {listing.map((item) => (
           <div className="card">
             <img src={item.picture}></img>
@@ -38,8 +53,9 @@ function Home() {
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
       <h2>Meet our Agents</h2>
+      <Agents />
     </>
   );
 }

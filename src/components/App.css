@@ -204,3 +204,15 @@ header a:hover{
     font-size: 14px;
     color: #666;
   }
+
+  a{
+    margin: 10px;
+    text-decoration: none;
+    font-size: large;
+  }
+  a:visited{
+    color: #00ABE4;
+  }
+  a:hover{
+    color: black;
+}
