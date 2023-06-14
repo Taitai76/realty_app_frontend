@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Searchbar from "./Searchbar";
-import Agents from "./Agents";
 function Home() {
+  const[listings, setListing]=useState([])
 
-  // function updatedListing(t) {
-  //   setListing(t);
-  // }
+  useEffect(() => {
+    fetch("http://localhost:9292/listings")
+      .then((r) => r.json())
+      .then((items) => setListing(items));
+  }, []);
+
+  function updatedListing(t){
+    setListing(t)
+  }
 
   return (
     <>
-      {/* <Searchbar setUpdatedListing={updatedListing} /> */}
-      {/* <div className="listing_list">
-        {listing.map((item) => (
+      <Searchbar setUpdatedListing={updatedListing} />
+      <div className="listing_list">
+        {listings.map((item) => (
           <div className="card">
             <img src={item.picture}></img>
             <div className="details">
@@ -31,15 +37,10 @@ function Home() {
                 {item.sqft} Sq. ft
                 <br />
               </span>
-              <span className="location">
-                Contact: {agentName(item.agent_id)}
-                <br />
-              </span>
             </div>
           </div>
         ))}
-      </div> */}
-      <h2>Meet our Agents</h2>
+      </div>
     </>
   );
 }

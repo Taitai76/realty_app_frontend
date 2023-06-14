@@ -1,4 +1,4 @@
-# Getting Started with Mohs Real Esatae listings manager
+# Getting Started with Mohs Real Estate listings manager
 
 This is a property listings manager application built using Ruby, Sinatra, ActiveRecord, and React. The application allows users to manage property listings, including adding new properties, editing existing ones, and searching for properties based on various criteria.
 

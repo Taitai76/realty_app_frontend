@@ -5,29 +5,50 @@ import Listings from "./Listings";
 
 
 const Agent = () => {
-    const [listings, setAgents] = useState([]);
+  const [listings, setAgents] = useState([]);
+  const params = useParams();
 
-    const params = useParams()
+  useEffect(() => {
+    fetch(`http://localhost:9292/agents/${params.id}`)
+      .then((r) => r.json())
+      .then((items) => setAgents(items.listings));
+  }, []);
 
-    useEffect(() => {
+  function updateListings(p) {
+    setAgents([...listings, p]);
+  }
 
-      fetch(`http://localhost:9292/agents/${params.id}`)
-        .then((r) => r.json())
-        .then(items => setAgents(items.listings));
-    }, []);
+  function editListings(updatedLisitng) {
+    const updateListingProperties = listings.map((element) => {
+      if (element.id === updatedLisitng.id) {
+        return updatedLisitng;
+      } else {
+        return element;
+      }
+    });
+    setAgents(updateListingProperties);
+  }
 
-    function updatedListings(p){
-        setAgents(...listings, p)
-    }
+  function handleDeletedItem(deletedItem) {
+    const updatedItems = listings.filter((item) => item.id !== deletedItem.id);
+    setAgents(updatedItems);
+  }
 
-    const list = listings.map((l) => <Listings key={l.id} listing={l} />);
+  const list = listings?.map((l) => (
+    <Listings 
+    key={l.id} 
+    listing={l} 
+    editListings={editListings} 
+    deletedListing={handleDeletedItem}/>
+  ));
+  
 
-    return (
-      <div className="listing_list">
-        {list}
-        <AddProperty newerlist={updatedListings} />
-      </div>
-    );
+  return (
+    <div className="listing_list">
+      {list}
+      <AddProperty newerlist={updateListings} />
+    </div>
+  );
 }
 
 export default Agent

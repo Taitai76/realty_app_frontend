@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-function AddProperty(){
-  const params = useParams()
+function AddProperty({ newerlist }) {
+  const params = useParams();
   const [property, setProperty] = useState({
-    picture: '',
-    address: '',
-    asking_price: '',
-    sqft: '',
-    year_built: ''
+    picture: "",
+    address: "",
+    asking_price: "",
+    sqft: "",
+    year_built: "",
   });
 
-  function handleInputChange(e){
+  function handleInputChange(e) {
     const { name, value } = e.target;
     setProperty({ ...property, [name]: value });
-  };
+  }
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
     const propertyData = {
       picture: property.picture,
       address: property.address,
       asking_price: property.asking_price,
       sqft: property.sqft,
-      year_built: property.year_built
+      year_built: property.year_built,
     };
     fetch(`http://localhost:9292/agents/${params.id}/listings`, {
       method: "POST",
@@ -33,20 +33,21 @@ function AddProperty(){
       body: JSON.stringify(propertyData),
     })
       .then((r) => r.json())
-      .then((r) => console.log(r));
+      .then((r) => newerlist(r));
 
-      setProperty({
-        picture: '',
-        address: '',
-        asking_price: '',
-        sqft: '',
-        year_built: ''
-      });
+    setProperty({
+      picture: "",
+      address: "",
+      asking_price: "",
+      sqft: "",
+      year_built: "",
+    });
   }
- 
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="property-form">
+        <h2>Add Property</h2>
         <label>
           Picture URL:
           <input
@@ -86,7 +87,7 @@ function AddProperty(){
             onChange={handleInputChange}
           />
         </label>
-      
+
         <br />
         <label>
           Year Built:

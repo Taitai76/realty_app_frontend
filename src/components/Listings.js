@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Listings = ({listing}) => {
+const Listings = ({ listing, editListings, deletedListing }) => {
   const [editingProperty, setEditingProperty] = useState(null);
   const [newAddress, setNewAddress] = useState(listing.address);
   const [newAskingPrice, setNewAskingPrice] = useState(listing.asking_price);
@@ -11,12 +11,8 @@ const Listings = ({listing}) => {
       method: "DELETE",
     })
       .then((r) => r.json())
-      .then(() => console.log(listing));
+      .then(() => deletedListing(listing));
   }
-
-  const handleEdit = (listing) => {
-    setEditingProperty(listing);
-  };
 
   const handleSave = () => {
     fetch(`http://localhost:9292/listings/${listing.id}`, {
@@ -31,9 +27,13 @@ const Listings = ({listing}) => {
       }),
     })
       .then((r) => r.json())
-      .then((r) => console.log(r));
+      .then((r) => editListings(r));
 
     setEditingProperty(null);
+  };
+
+  const handleEdit = (listing) => {
+    setEditingProperty(listing);
   };
 
   const handleCancel = () => {
@@ -101,10 +101,10 @@ const Listings = ({listing}) => {
   }
 
   return (
-  <div>
-    <div className="card">{renderCard(listing)}</div>
-  </div>
-  )
-}
+    <div>
+      <div className="card">{renderCard(listing)}</div>
+    </div>
+  );
+};
 
 export default Listings
