@@ -9,6 +9,14 @@ import Agent from "./Agent";
 
 
 function App() {
+  const [agents, setAgents] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:9292/agents")
+      .then((r) => r.json())
+      .then((items) => setAgents(items));
+  }, []);
+
   return (
     <>
       <Header />

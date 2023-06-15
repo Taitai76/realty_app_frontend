@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import Agent from "./Agent";
 import { Link } from "react-router-dom";
 import AddAgent from "./AddAgent";
@@ -127,9 +127,9 @@ function Agents(){
             <p>Years Worked: {agent.years_worked}</p>
             <p>Deals Closed: {agent.deals_closed}</p>
             <button onClick={() => handleEdit(agent)}>Edit</button>
-            <Link key={agent.id} to={`/agents/${agent.id}`}>
-              <h3 className="navi">See {agent.name}'s Listings</h3>
-            </Link>
+              <Link key={agent.id} to={`/agents/${agent.id}`}>
+                <h3 className="navi">See {agent.name}'s Listings</h3>
+              </Link>
             <button
               className="delete_card"
               onClick={() => handleDeleteClick(agent.id)}
