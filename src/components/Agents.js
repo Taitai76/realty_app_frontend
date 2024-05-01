@@ -1,10 +1,8 @@
-import React, { useEffect, useState} from "react";
-import Agent from "./Agent";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AddAgent from "./AddAgent";
 
 function Agents({ agents, updateAgent }) {
-
   const [editingAgentId, setEditingAgentId] = useState(null);
   const [editedAgentData, setEditedAgentData] = useState({
     name: "",
@@ -13,12 +11,12 @@ function Agents({ agents, updateAgent }) {
     deals_closed: "",
   });
 
-  //set
+  // Function to add a new agent to the list of agents
   function newAgent(a) {
-   updateAgent([...agents, a]);
+    updateAgent([...agents, a]);
   }
 
-  // DELETE
+  // Function to handle the deletion of an agent
   function handleDeleteClick(t) {
     fetch(`http://localhost:9292/agents/${t}`, {
       method: "DELETE",
@@ -27,12 +25,13 @@ function Agents({ agents, updateAgent }) {
       .then(() => handleDeleteAgent(t));
   }
 
-  //Update DELETE state
+  // Function to update the state after an agent is deleted
   function handleDeleteAgent(t) {
     const updatedItems = agents.filter((item) => item.id !== t);
-   updateAgent(updatedItems);
+    updateAgent(updatedItems);
   }
-  
+
+  // Function to handle the editing of an agent
   const handleEdit = (agent) => {
     setEditingAgentId(agent.id);
     setEditedAgentData({
@@ -43,7 +42,7 @@ function Agents({ agents, updateAgent }) {
     });
   };
 
-  //UPDATE agents
+  // Function to handle the update of an agent
   function handleUpdate(agentId) {
     fetch(`http://localhost:9292/agents/${agentId}`, {
       method: "PATCH",
@@ -64,6 +63,7 @@ function Agents({ agents, updateAgent }) {
     });
   }
 
+  // Function to handle input change in the edited agent data
   const handleInputChange = (event) => {
     setEditedAgentData((prevData) => ({
       ...prevData,
@@ -71,6 +71,7 @@ function Agents({ agents, updateAgent }) {
     }));
   };
 
+  // Function to update the list of agents after an agent is edited
   function editAgents(updatedAgents) {
     const updateAgentsProperties = agents.map((element) => {
       if (element.id === updatedAgents.id) {
@@ -79,9 +80,10 @@ function Agents({ agents, updateAgent }) {
         return element;
       }
     });
-   updateAgent(updateAgentsProperties);
+    updateAgent(updateAgentsProperties);
   }
 
+  // Function to render the agent card with edit and delete functionality
   function agentCard(agent) {
     if (editingAgentId === agent.id) {
       return (
@@ -143,4 +145,5 @@ function Agents({ agents, updateAgent }) {
     </div>
   );
 }
+
 export default Agents;

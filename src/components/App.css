@@ -32,7 +32,7 @@ header a:hover{
 
 /* Listings cards*/
 .card {
-    background-color: #fff;
+    background-color: #f5f5f5;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: inline-block;
@@ -50,17 +50,29 @@ header a:hover{
   
   .card .details {
     padding: 15px;
+    background-color: #f5f5f5;
   }
   
   .card .details h3 {
     font-size: 18px;
     margin: 0 0 10px;
+    background-color: #f5f5f5;
   }
   
   .card .details p {
     font-size: 14px;
     margin: 0;
     color: #555;
+    background-color: #f5f5f5;
+  }
+
+  .details .location {
+    background-color: #f5f5f5;
+  }
+
+  .price{
+    background-color: #f5f5f5;
+    font-size: large;
   }
 
   /* search bar */
@@ -101,11 +113,16 @@ header a:hover{
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .property-form label {
     display: block;
     margin-bottom: 10px;
+    background-color: #f5f5f5;
   }
   
   .property-form input[type="text"] {
@@ -115,6 +132,7 @@ header a:hover{
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: 10px;
+    background-color: #f5f5f5;
   }
   
   .property-form button[type="submit"] {
@@ -188,6 +206,10 @@ header a:hover{
     background-color: #f5f5f5;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+
+  .agent_card h2 {
+    background-color: #f5f5f5;
+  }
   
   .agent_card img {
     width: 100%;
@@ -198,17 +220,35 @@ header a:hover{
   .agent_card h3 {
     font-size: 18px;
     margin-bottom: 5px;
+    background-color: #f5f5f5;
   }
   
   .agent_card p {
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
     color: #666;
+    background-color: #f5f5f5;
+  }
+
+  .agent_card button {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    transition: all 0.3s ease;
   }
 
   a{
     margin: 10px;
     text-decoration: none;
     font-size: large;
+    color: #00ABE4;
   }
   a:visited{
     color: #00ABE4;
